@@ -1,0 +1,13 @@
+<template name="list">
+  <navigator url="../article/article?id={{id}}">
+    <view class="items">
+      <image class="poster" src="{{images}}"></image>
+      <view class="meta">
+        <text class="title">{{title}}</text>
+        <view class="content"><text>{{abstract}} </text></view>
+        <view class="time"><text>{{datetime}}</text></view>
+        <view class="pv"><text>阅读量：{{pv}}</text></view>
+      </view>
+    </view>
+  </navigator>
+</template>

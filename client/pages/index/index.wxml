@@ -1,0 +1,92 @@
+<!--index.wxml-->
+<import src="../../template/nav" />
+<import src="../../template/list" />
+<view class="container">
+  <!--
+    <view class="userinfo" bindtap="login">
+        <image
+            class="userinfo-avatar"
+            src="{{logged ? userInfo.avatarUrl : './user-unlogin.png'}}"
+            background-size="cover"
+        ></image>
+        <view>
+            <text class="userinfo-nickname">{{logged ? userInfo.nickName : '点击测试登录接口'}}</text>
+            <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
+        </view>
+    </view>
+
+    <view class="uploader">
+        <view class="uploader-text" bindtap="doUpload">
+            <text>上传图片</text>
+        </view>
+        <view class="uploader-container" wx:if="{{imgUrl}}">
+            <image
+                class="uploader-image"
+                src="{{imgUrl}}"
+                mode="aspectFit"
+                bindtap="previewImg"
+            ></image>
+        </view>
+    </view>
+
+    <view class="uploader">
+        <navigator url="../addCgi/addCgi" open-type="navigate" class="uploader-text">
+            <text>快速增加 CGI</text>
+        </navigator>
+    </view>
+    -->
+  <!-- 文章列表界面 -->
+  <view class="{{page==0?'show_block':'hide_block'}}">
+    <block wx:for-items="{{items}}" wx:key="itemId">
+        <template is="list" data="{{...item}}"/>
+    </block>
+  </view>
+
+  <!-- 话题界面 -->
+  <view class="container {{page==1?'show_block':'hide_block'}}">
+    <view class="container-body container-gray">
+      <view class="group">
+        <view class="group-title">本周话题：</view>
+        <view class="group-header">
+        你被问过的最愚蠢的技术问题是什么？</view>
+        <view class="group-body">
+          <textarea placeholder="可输入1000字" maxlength="1000"></textarea>
+        </view>
+      </view>
+      <view class="uploader">
+          <view class="uploader-text" bindtap="doUpload">
+              <text>上传图片</text>
+          </view>
+          <view class="uploader-container" wx:if="{{imgUrl}}">
+              <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+          </view>
+      </view>
+      <view class="btn-submit">
+        <button class="btn-block btn-green" bindtap="questionSubmit">确认提交</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="profile {{page==2?'show_block':'hide_block'}}">
+    <view class='user' bindtap="login">
+      <image
+              class="userinfo-avatar"
+              src="{{logged ? userInfo.avatarUrl : './user-unlogin.png'}}"
+              background-size="cover"
+      ></image>
+      <view>
+          <text class="userinfo-nickname">{{logged ? userInfo.nickName : '点击登录'}}</text>
+      </view>
+      <view>
+          <text class="show-nickname" wx:if="{{logged}}">{{userInfo.city}}, {{userInfo.province}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 菜单栏 -->
+  <view class="flex fix_nav_wp">
+    <block wx:for-items="{{navData}}" wx:key="navDataId">
+        <template is="nav" data="{{...item}}"/>
+    </block>
+  </view> 
+</view>

@@ -1,0 +1,11 @@
+<!--pages/article/article.wxml-->
+<scroll-view scroll-y="true">
+  <view class="meta">
+    <image class="poster" src="{{images}}" background-size="cover"/>
+    <text class="title">{{title}}</text>
+    <text class="info">修改时间：{{time}} </text>
+  </view>
+  <view class="summary">
+    <text class="content">{{content}}</text>
+  </view>
+</scroll-view>
